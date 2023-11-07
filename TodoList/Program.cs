@@ -11,24 +11,28 @@ namespace TodoList
 
 			var app = builder.Build();
 
+			Configure(app);
+		}
+		private static void Configure(WebApplication _app)
+		{
 			// Configure the HTTP request pipeline.
-			if (!app.Environment.IsDevelopment())
+			if (!_app.Environment.IsDevelopment())
 			{
-				app.UseExceptionHandler("/Error");
+				_app.UseExceptionHandler("/Error");
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
+				_app.UseHsts();
 			}
 
-			app.UseHttpsRedirection();
-			app.UseStaticFiles();
+			_app.UseHttpsRedirection();
+			_app.UseStaticFiles();
 
-			app.UseRouting();
+			_app.UseRouting();
 
-			app.UseAuthorization();
+			_app.UseAuthorization();
 
-			app.MapRazorPages();
+			_app.MapRazorPages();
 
-			app.Run();
+			_app.Run();
 		}
 	}
 }
